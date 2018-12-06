@@ -1,0 +1,14 @@
+# OS X
+
+.DS_Store
+
+# Xcode
+
+*/*.xcodeproj/*
+!*/*.xcodeproj/project.pbxproj
+*.xccheckout
+
+xcuserdata
+*.xcscmblueprint
+
+Pods/
