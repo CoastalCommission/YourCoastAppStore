@@ -501,15 +501,19 @@ CCCPinAnnotationViewDelegate
 
     if (selectedAnnotations.count == 1 && visibleAccessPoints.count > 0)
     {
-        NSDictionary *selectedAccessPoint = selectedAnnotations.firstObject.accessPoint;
-        NSUInteger selectedIndex = [accessPoints indexOfObjectPassingTest:^BOOL (NSDictionary *accessPoint, NSUInteger idx, BOOL *stop) {
-            return [accessPoint[kID] integerValue] == [selectedAccessPoint[kID] integerValue];
-        }];
-
-        if (selectedIndex != NSNotFound)
+        id selectedAnnotation = selectedAnnotations.firstObject;
+        if ([selectedAnnotation isKindOfClass:[CCCPinAnnotation class]])
         {
-            [visibleAccessPoints removeObjectAtIndex:selectedIndex];
-            [visibleAccessPoints insertObject:selectedAccessPoint atIndex:0];
+            NSDictionary *selectedAccessPoint = ((CCCPinAnnotation *)selectedAnnotation).accessPoint;
+            NSUInteger selectedIndex = [accessPoints indexOfObjectPassingTest:^BOOL (NSDictionary *accessPoint, NSUInteger idx, BOOL *stop) {
+                return [accessPoint[kID] integerValue] == [selectedAccessPoint[kID] integerValue];
+            }];
+
+            if (selectedIndex >= 0 && selectedIndex != NSNotFound)
+            {
+                [visibleAccessPoints removeObjectAtIndex:selectedIndex];
+                [visibleAccessPoints insertObject:selectedAccessPoint atIndex:0];
+            }
         }
     }
 
