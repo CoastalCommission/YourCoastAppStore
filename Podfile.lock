@@ -2,9 +2,9 @@ PODS:
   - GoogleAnalytics (3.17.0)
   - GTMNSStringHTMLAdditions (0.2.1)
   - QBImagePickerController (3.4.0)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
 
 DEPENDENCIES:
   - GoogleAnalytics
@@ -23,8 +23,8 @@ SPEC CHECKSUMS:
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GTMNSStringHTMLAdditions: 4bfc402b1b17165360728083156cae0a74ecb308
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: bd24a450448a7029b4883f44bc734a54fd8ba1d3
+PODFILE CHECKSUM: 00a0ca456917ca27cbc79851e2fa39f6242ecf25
 
 COCOAPODS: 1.5.3
