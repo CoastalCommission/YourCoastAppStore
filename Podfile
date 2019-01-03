@@ -17,4 +17,9 @@ post_install do |installer|
       end
     end
   end
+
+  installer.pods_project.build_configurations.each do |config|
+      config.build_settings['ENABLE_TESTABILITY'] = 'YES'
+      config.build_settings['ONLY_ACTIVE_ARCH'] = 'YES'
+  end
 end
