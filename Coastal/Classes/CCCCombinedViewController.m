@@ -488,7 +488,7 @@ CCCPinAnnotationViewDelegate
 {
     MKMapRect mapRect = [self.view.hiddenMapView mapRectThatFits:self.view.mapView.visibleMapRect
                                                      edgePadding:UIEdgeInsetsMake(-60.0, 0.0, -75.0, 0.0)];
-    NSMutableArray *accessPoints = [self accessPointsWithinMapRect:mapRect].mutableCopy;
+    NSArray *accessPoints = [self accessPointsWithinMapRect:mapRect];
 
     NSArray *sortDescriptors = @[
                                  [[NSSortDescriptor alloc] initWithKey:kDistance
@@ -505,11 +505,9 @@ CCCPinAnnotationViewDelegate
         if ([selectedAnnotation isKindOfClass:[CCCPinAnnotation class]])
         {
             NSDictionary *selectedAccessPoint = ((CCCPinAnnotation *)selectedAnnotation).accessPoint;
-            NSUInteger selectedIndex = [accessPoints indexOfObjectPassingTest:^BOOL (NSDictionary *accessPoint, NSUInteger idx, BOOL *stop) {
-                return [accessPoint[kID] integerValue] == [selectedAccessPoint[kID] integerValue];
-            }];
+            NSUInteger selectedIndex = [[visibleAccessPoints valueForKey:kID] indexOfObject:selectedAccessPoint[kID]];
 
-            if (selectedIndex >= 0 && selectedIndex != NSNotFound)
+            if (selectedIndex != NSNotFound)
             {
                 [visibleAccessPoints removeObjectAtIndex:selectedIndex];
                 [visibleAccessPoints insertObject:selectedAccessPoint atIndex:0];
